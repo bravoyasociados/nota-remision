@@ -2,234 +2,283 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Nota de Remisión | Bravo & Asociados</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nota de Remisión - Bravo & Asociados</title>
 
 <style>
-/* ===== GENERAL ===== */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+
 body {
-    font-family: "Times New Roman", serif;
-    margin: 40px;
-    background: #f5f5f5;
+    font-family: 'Libre Baskerville', serif;
+    background-color: #fff;
     color: #000;
+    margin: 20px;
+    padding: 0;
 }
 
-h1, h2 {
-    margin: 0;
-}
-
-/* ===== LOGIN ===== */
-#login {
-    max-width: 400px;
-    margin: 150px auto;
-    text-align: center;
-}
-
-#login input {
-    padding: 10px;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-/* ===== HEADER ===== */
 header {
     text-align: center;
-    border-bottom: 3px solid #bfa046;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+    padding-bottom: 10px;
 }
 
 header img {
     width: 250px;
-    height: 250px;
-    object-fit: contain;
-    margin-bottom: 10px;
+    max-width: 80%;
+    height: auto;
 }
 
-header h1 {
-    font-size: 28px;
-    letter-spacing: 2px;
+#loginSection {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
 }
 
-/* ===== FORM ===== */
-.form-section label {
-    font-weight: bold;
-}
-
-.form-section input {
+#loginSection input {
     width: 100%;
-    padding: 6px;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+#loginSection button {
+    background-color: #b8860b;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#loginSection button:hover {
+    background-color: #daa520;
+}
+
+.form-section {
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 button {
-    padding: 10px 20px;
-    background: #000;
-    color: #bfa046;
+    background-color: #b8860b;
+    color: #fff;
     border: none;
-    font-weight: bold;
+    padding: 10px 20px;
     cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
-/* ===== TABLE ===== */
+button:hover {
+    background-color: #daa520;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
-th {
-    background: #000;
-    color: #bfa046;
+table, th, td {
+    border: 1px solid black;
 }
 
 th, td {
-    border: 1px solid #000;
     padding: 8px;
     text-align: center;
 }
 
-/* ===== SIGNATURE ===== */
-.signature {
-    margin-top: 80px;
-    text-align: center;
+.total {
+    text-align: right;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
-.signature-line {
-    margin: 0 auto;
-    width: 60%;
+.firma {
+    margin-top: 50px;
     border-top: 1px solid #000;
-    margin-bottom: 5px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
 }
 
-/* ===== PRINT ===== */
-@media print {
-    .no-print {
-        display: none;
-    }
-    body {
-        background: #fff;
-    }
+#nota {
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #b8860b;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#nota img {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 250px;
+    height: auto;
+}
+
+@media only screen and (max-width: 480px) {
+    h1 { font-size: 20px; }
+    input, button { font-size: 16px; }
+    table, th, td { font-size: 14px; }
 }
 </style>
 </head>
-
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-    <h2>Acceso al Sistema</h2>
-    <input type="password" id="password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-</div>
-
-<!-- SISTEMA -->
-<div id="system" style="display:none">
-
 <header>
-    <img src="logo.png">
-    <h1>BRAVO & ASOCIADOS</h1>
-    <p>Nota de Remisión</p>
+    <img src="logo.png" alt="Logo">
+    <h1>Nota de Remisión</h1>
 </header>
 
-<div class="form-section no-print">
-    <label>Cliente</label>
-    <input id="cliente">
-
-    <label>Dirección</label>
-    <input id="direccion">
-
-    <label>Producto / Servicio</label>
-    <input id="producto">
-
-    <label>Cantidad</label>
-    <input type="number" id="cantidad">
-
-    <label>Precio Unitario</label>
-    <input type="number" id="precio">
-
-    <button onclick="emitirNota()">Emitir Nota</button>
-    <button onclick="exportarPDF()">Exportar PDF</button>
+<div id="loginSection">
+    <label>Contraseña:</label>
+    <input type="password" id="passwordInput" placeholder="Ingrese la contraseña">
+    <button onclick="checkPassword()">Ingresar</button>
 </div>
 
-<hr>
+<div id="systemSection" style="display:none;">
+    <div class="form-section">
+        <label>Cliente:</label>
+        <input type="text" id="cliente">
 
-<p><strong>Folio:</strong> <span id="folio"></span></p>
-<p><strong>Fecha:</strong> <span id="fecha"></span></p>
-<p><strong>Cliente:</strong> <span id="pCliente"></span></p>
-<p><strong>Dirección:</strong> <span id="pDireccion"></span></p>
+        <label>Dirección:</label>
+        <input type="text" id="direccion">
 
-<table>
-<thead>
-<tr>
-<th>Producto</th>
-<th>Cantidad</th>
-<th>Precio</th>
-<th>Importe</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td id="pProducto"></td>
-<td id="pCantidad"></td>
-<td id="pPrecio"></td>
-<td id="pImporte"></td>
-</tr>
-</tbody>
-</table>
+        <label>Producto / Servicio:</label>
+        <input type="text" id="producto">
 
-<h2 style="text-align:right">Total: $<span id="total"></span></h2>
+        <label>Cantidad:</label>
+        <input type="number" id="cantidad">
 
-<div class="signature">
-    <div class="signature-line"></div>
-    <p id="firmaCliente"></p>
+        <label>Precio Unitario:</label>
+        <input type="number" id="precio">
+
+        <button onclick="addProducto()">Agregar Producto</button>
+        <button onclick="emitirNota()">Emitir Nota</button>
+        <button onclick="abrirImpresion()">Imprimir / Guardar PDF</button>
+
+        <!-- Previsualización -->
+        <table id="previsualizacionTabla" style="margin-top:20px;">
+            <thead style="background-color:#b8860b; color:#fff;">
+                <tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Importe</th></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 </div>
 
+<div id="nota" style="display:none; max-width:800px; margin:auto;">
+    <img src="logo.png" alt="Logo">
+    <p style="text-align:center; font-size:20px; color:#b8860b;"><strong>NOTA DE REMISIÓN</strong></p>
+    <p><strong>Folio:</strong> <span id="folio"></span></p>
+    <p><strong>Fecha:</strong> <span id="fecha"></span></p>
+    <p><strong>Cliente:</strong> <span id="pCliente"></span></p>
+    <p><strong>Dirección:</strong> <span id="pDireccion"></span></p>
+
+    <table id="tablaProductos">
+        <thead style="background-color:#b8860b; color:#fff;">
+            <tr><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Importe</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="total"><strong>Total: $<span id="total"></span></strong></div>
+
+    <div class="firma">
+        <p>Firma del Cliente</p>
+        <p id="firmaCliente"></p>
+    </div>
 </div>
 
 <script>
-function login() {
-    if (document.getElementById("password").value === "Rojo3714") {
-        document.getElementById("login").style.display = "none";
-        document.getElementById("system").style.display = "block";
-    } else {
-        alert("Contraseña incorrecta");
-    }
+let productos = [];
+
+function checkPassword() {
+    let password = document.getElementById("passwordInput").value;
+    if(password === "Rojo3714") {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("systemSection").style.display = "block";
+    } else { alert("Contraseña incorrecta"); }
 }
 
-function emitirNota() {
-    let cliente = clienteInput = document.getElementById("cliente").value;
-    let direccion = document.getElementById("direccion").value;
+function addProducto() {
     let producto = document.getElementById("producto").value;
     let cantidad = Number(document.getElementById("cantidad").value);
     let precio = Number(document.getElementById("precio").value);
 
-    if (!cliente || !producto || cantidad <= 0 || precio <= 0) {
-        alert("Completa todos los campos");
-        return;
-    }
+    if(!producto || cantidad <=0 || precio <=0){ alert("Complete todos los campos correctamente"); return; }
+
+    productos.push({producto, cantidad, precio});
+    document.getElementById("producto").value = "";
+    document.getElementById("cantidad").value = "";
+    document.getElementById("precio").value = "";
+
+    // Actualizar previsualización
+    let tbody = document.querySelector("#previsualizacionTabla tbody");
+    tbody.innerHTML = "";
+    productos.forEach(p=>{
+        let importe = p.cantidad * p.precio;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `<td>${p.producto}</td><td>${p.cantidad}</td><td>$${p.precio.toFixed(2)}</td><td>$${importe.toFixed(2)}</td>`;
+        tbody.appendChild(tr);
+    });
+}
+
+function emitirNota() {
+    let cliente = document.getElementById("cliente").value;
+    let direccion = document.getElementById("direccion").value;
+    if(!cliente || !direccion){ alert("Complete todos los campos del cliente"); return; }
 
     let folio = localStorage.getItem("folio") || 1;
     localStorage.setItem("folio", Number(folio) + 1);
-
-    let total = cantidad * precio;
     let fecha = new Date().toLocaleDateString();
 
     document.getElementById("folio").innerText = folio;
     document.getElementById("fecha").innerText = fecha;
     document.getElementById("pCliente").innerText = cliente;
     document.getElementById("pDireccion").innerText = direccion;
-    document.getElementById("pProducto").innerText = producto;
-    document.getElementById("pCantidad").innerText = cantidad;
-    document.getElementById("pPrecio").innerText = "$" + precio.toFixed(2);
-    document.getElementById("pImporte").innerText = "$" + total.toFixed(2);
-    document.getElementById("total").innerText = total.toFixed(2);
 
-    document.getElementById("firmaCliente").innerText =
-        cliente + " — " + fecha;
+    let tbody = document.querySelector("#tablaProductos tbody");
+    tbody.innerHTML = "";
+    let total = 0;
+    productos.forEach(p=>{
+        let importe = p.cantidad * p.precio;
+        total += importe;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `<td>${p.producto}</td><td>${p.cantidad}</td><td>$${p.precio.toFixed(2)}</td><td>$${importe.toFixed(2)}</td>`;
+        tbody.appendChild(tr);
+    });
+
+    document.getElementById("total").innerText = total.toFixed(2);
+    document.getElementById("firmaCliente").innerText = cliente + " - " + fecha;
+    document.getElementById("nota").style.display = "block";
 }
 
-function exportarPDF() {
+function abrirImpresion() {
+    let printContents = document.getElementById("nota").innerHTML;
+    let originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
     window.print();
+    document.body.innerHTML = originalContents;
+    location.reload();
 }
 </script>
 

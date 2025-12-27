@@ -273,12 +273,33 @@ function emitirNota() {
 }
 
 function abrirImpresion() {
-    let printContents = document.getElementById("nota").innerHTML;
-    let originalContents = document.body.innerHTML;
-    document.body.innerHTML = printContents;
-    window.print();
-    document.body.innerHTML = originalContents;
-    location.reload();
+    // Abrir nueva ventana para impresión, compatible móvil y WhatsApp
+    let notaHTML = document.getElementById("nota").outerHTML;
+    let ventImp = window.open('', '_blank', 'width=800,height=600');
+    ventImp.document.write(`
+        <html>
+        <head>
+            <title>Imprimir Nota</title>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+                body { font-family:'Libre Baskerville', serif; margin:20px; }
+                #nota { border:2px solid #b8860b; padding:20px; max-width:800px; margin:auto; }
+                #nota img { display:block; margin:0 auto 10px auto; width:250px; height:auto; }
+                table { width:100%; border-collapse: collapse; margin-top:15px; }
+                table, th, td { border:1px solid black; }
+                th, td { padding:8px; text-align:center; }
+                th { background-color:#b8860b; color:#fff; }
+                .total { text-align:right; font-size:18px; margin-top:10px; }
+                .firma { margin-top:50px; border-top:1px solid #000; width:80%; max-width:400px; text-align:center; margin-left:auto; margin-right:auto; padding-top:5px; }
+                p { margin:5px 0; }
+            </style>
+        </head>
+        <body>${notaHTML}</body>
+        </html>
+    `);
+    ventImp.document.close();
+    ventImp.focus();
+    ventImp.print();
 }
 </script>
 
